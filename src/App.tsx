@@ -16,7 +16,7 @@ function App() {
     const parser = require('js-sql-parser')
     
     try {
-      const parsedQuery = parser.parse(text); // dummy sql
+      const parsedQuery = parser.parse(text); 
     
       console.log('Parsed Query:');
       console.log(JSON.stringify(parsedQuery, null, 2));
@@ -34,7 +34,8 @@ function App() {
       const relationalAlgebra = `π ${stringUtil.convertToSubscript(selectClause)} σ ${stringUtil.convertToSubscript(fromClause)} (${whereCluase})`
       setAnswer(relationalAlgebra) 
     } catch (error:any) {
-      console.error('SQL Parsing Error:', error.message);
+      const errorMessage:string = error.message
+      setAnswer(errorMessage)
     }
   }
 
